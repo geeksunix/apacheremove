@@ -5,7 +5,7 @@
     - name: Validate inputs
       assert:
         that:
-          - runtime_servers = "unspecified"
+          - runtime_servers != "unspecified"
           - runtime_ssh_user is defined
         fail_msg: "Missing required host or user input"
 
