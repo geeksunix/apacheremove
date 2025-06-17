@@ -16,14 +16,14 @@
         ansible_user: vagrant  # Default user, override in survey if needed
       loop: "{{ runtime_servers.split(',') }}"
 
-- name: UnInstall Apache on runtime hosts
+- name: UnInstall Nginx on runtime hosts
   hosts: apache_servers  # Only runs on dynamically added hosts
   become: yes
   become_method: sudo
   tasks:
-    - name: Uninstall Apache
+    - name: Uninstall Nginx
       yum:
-        name: httpd
+        name: nginx
         state: absent
 
     
