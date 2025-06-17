@@ -5,7 +5,7 @@
     - name: Validate inputs
       assert:
         that:
-          - runtime_hosts != "unspecified"
+          - runtime_servers != "unspecified"
           - runtime_ssh_user is defined
         fail_msg: "Missing required host or user input"
 
@@ -17,7 +17,7 @@
         ansible_user: "{{ runtime_ssh_user }}"
         ansible_ssh_pass: "{{ runtime_ssh_pass | default(omit) }}"
         ansible_become_pass: "{{ runtime_become_pass | default(omit) }}"
-      loop: "{{ runtime_hosts.split(',') }}"
+      loop: "{{ runtime_servers.split(',') }}"
 
 - name: Install software
   hosts: runtime_servers
